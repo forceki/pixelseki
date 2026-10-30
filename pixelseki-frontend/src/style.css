@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&family=Press+Start+2P&family=VT323&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Main Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0e12;
+}
+::-webkit-scrollbar-thumb {
+  background: #262936;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ffff;
+}
+
+body {
+  background-color: #0d0e12;
+  color: #e2e8f0;
+  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+/* Custom Grid checkerboard background patterns */
+.checkerboard-bg {
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    10px 10px;
+  background-image:
+    linear-gradient(
+      45deg,
+      #15171e 25%,
+      transparent 25%,
+      transparent 75%,
+      #15171e 75%,
+      #15171e 100%
+    ),
+    linear-gradient(45deg, #15171e 25%, #0d0e12 25%, #0d0e12 75%, #15171e 75%, #15171e 100%);
+}
+
+/* Custom glow utility animations */
+@keyframes cyber-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+    border-color: rgba(34, 211, 238, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.8);
+    border-color: rgba(34, 211, 238, 1);
+  }
+}
+
+@keyframes sakura-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(240, 171, 252, 0.4);
+    border-color: rgba(240, 171, 252, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(240, 171, 252, 0.8);
+    border-color: rgba(240, 171, 252, 1);
+  }
+}
+
+.glow-active {
+  animation: cyber-pulse 2s infinite ease-in-out;
+}
+
+.light-mode .glow-active {
+  animation: sakura-pulse 2s infinite ease-in-out;
+}
+
+/* 2D Retro Game Font Classes */
+.font-pixel {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+.font-terminal {
+  font-family: 'VT323', monospace;
+  font-size: 1.25rem;
+}
+
+/* CRT Screen Effect Overlay */
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-screen::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.18) 50%);
+  background-size: 100% 3px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* CRT Flicker */
+@keyframes crt-flicker {
+  0% { opacity: 0.985; }
+  50% { opacity: 1; }
+  100% { opacity: 0.99; }
+}
+
+.crt-flicker {
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* CRT Vignette */
+.crt-vignette {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle, transparent 65%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 101;
+  pointer-events: none;
+}
+
+/* Retro Double Pixel Border Panels */
+.pixel-panel {
+  border: 4px double #262936;
+  background-color: #15171e;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.pixel-panel-accent {
+  border: 4px double #00ffff;
+  background-color: #15171e;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+}
+
+.pixel-panel-pink {
+  border: 4px double #ff00ff;
+  background-color: #15171e;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.15);
+}
+
+/* Scanline scrolling effect for arcade feel */
+@keyframes scroll-scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline-light {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 10px;
+  background: rgba(0, 255, 255, 0.05);
+  animation: scroll-scanline 6s linear infinite;
+  z-index: 99;
+  pointer-events: none;
+}
+
+/* Flashing caret for retro typing */
+@keyframes blink-caret {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.blink-cursor {
+  animation: blink-caret 1s step-end infinite;
+}
+
+/* Text glow */
+.text-glow-accent {
+  text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+}
+
+.text-glow-pink {
+  text-shadow: 0 0 8px rgba(240, 171, 252, 0.6);
+}
+
+.text-glow-sakura {
+  text-shadow: 0 0 8px rgba(240, 171, 252, 0.6), 0 0 20px rgba(240, 171, 252, 0.3);
+}
+
+.text-glow-sunset {
+  text-shadow: 0 0 8px rgba(192, 132, 252, 0.6), 0 0 20px rgba(192, 132, 252, 0.3);
+}
+
+/* Hero background image */
+.hero-bg-dark {
+  background-image: url('/assets/bg-dark.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-bg-light {
+  background-image: url('/assets/bg-ligth.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Pixel panel variants for light/sunset theme */
+.pixel-panel-sakura {
+  border: 4px double #f0abfc;
+  background-color: rgba(17, 24, 39, 0.85);
+  box-shadow: 0 0 15px rgba(240, 171, 252, 0.15);
+}
+
+.pixel-panel-sunset {
+  border: 4px double #c084fc;
+  background-color: rgba(45, 27, 78, 0.85);
+  box-shadow: 0 0 15px rgba(192, 132, 252, 0.15);
+}
+
