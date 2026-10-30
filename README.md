@@ -78,3 +78,7 @@ Open http://localhost:5173.
 
 - [Backend README](pixelseki-backend/README.md) — env vars, database, API, workers
 - [Frontend README](pixelseki-frontend/README.md) — setup, auth flow, SSE streaming, styling
+
+## License
+
+[MIT](LICENSE)
